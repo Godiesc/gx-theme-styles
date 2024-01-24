@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "name": "GX Theme Styles",
+    "version": "1.0.3",
+    "description": "Personalize your browser with our beautiful preset GX themes or choose your favorite colors and make your browser the most beautiful one.",
+    "browser_specific_settings": {
+        "gecko": {
+          "id": "GXThemeStyles@Godie"
+        }
+    },
+    "icons": {
+      "48": "data/icons/icon.svg"
+    },
+    "permissions": [
+      "theme",
+      "storage"
+    ],
+    "browser_action": {
+      "default_icon": "data/icons/icon.svg",
+      "default_title": "GX Theme - Clic to open the options",
+      "default_popup": "popup.html"
+    },
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    }
+  }
+  

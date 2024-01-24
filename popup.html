@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>GX theme Options</title>
+    <script src="data/jquery-3.7.1.min.js"></script>
+    <script src="data/spectrum.js"></script>
+    <link rel="stylesheet" href="data/spectrum.css" />
+    <link rel="stylesheet" href="data/styles.css" />
+    <script src="popup.js"></script>
+</head>
+
+<body>
+    <Label id="maintitle">GX theme - Easy Customizations</label>
+    <hr/>
+    
+    <div id="section-title"><label>Themes</label></div>
+
+    <!-- Primera sección -->
+    <div class="scrolling-buttons-container" id="scrolling-buttons-container">
+        <button id="scrolling-button-left"></button>
+        <button id="scrolling-button-right"></button>
+    </div>
+
+    <div class="scrolling-container" id="scrolling-container">
+        <div class="scrolling-card">
+            <img src="data/images/fuchsia.png" alt="fuchsia">
+            <button class="theme-button" data-theme-id="fuchsia">Button</button>
+        </div>
+        <div class="scrolling-card">
+            <img src="data/images/ultraviolet.png" alt="ultraviolet">
+            <button class="theme-button" data-theme-id="ultraviolet">Button</button>
+        </div>
+        <div class="scrolling-card">
+            <img src="data/images/blue.png" alt="blue">
+            <button class="theme-button" data-theme-id="blue">Button</button>
+        </div>
+        <div class="scrolling-card">
+            <img src="data/images/swamp.png" alt="swamp">
+            <button class="theme-button" data-theme-id="swamp">Button</button>
+        </div>
+        <div class="scrolling-card">
+            <img src="data/images/cheaterman.png" alt="cheaterman">
+            <button class="theme-button" data-theme-id="cheaterman">Button</button>
+        </div>
+        <div class="scrolling-card">
+            <img src="data/images/gray.png" alt="gray">
+            <button class="theme-button" data-theme-id="gray">Button</button>
+        </div>
+        <div class="scrolling-card">
+            <img src="data/images/orange.png" alt="orange">
+            <button class="theme-button" data-theme-id="orange">Button</button>
+        </div>
+        <div class="scrolling-card">
+            <img src="data/images/catppuccin.png" alt="catppuccin">
+            <button class="theme-button" data-theme-id="catppuccin">Button</button>
+        </div>
+    </div>
+
+    <!-- Segunda sección -->
+    <div class="scrolling-buttons-container1" id="scrolling-buttons-container1">
+        <button id="scrolling-button-left1"></button>
+        <button id="scrolling-button-right1"></button>
+    </div>
+    <div class="scrolling-container1" id="scrolling-container1">
+        <div class="scrolling-card1">
+            <img src="data/images/fuchsiabright.png" alt="fuchsiabright">
+            <button class="theme-button" data-theme-id="fuchsiabright">Button</button>
+        </div>
+        <div class="scrolling-card1">
+            <img src="data/images/ultravioletbright.png" alt="ultravioletbright">
+            <button class="theme-button" data-theme-id="ultravioletbright">Button</button>
+        </div>
+        <div class="scrolling-card1">
+            <img src="data/images/bluebright.png" alt="bluebright">
+            <button class="theme-button" data-theme-id="bluebright">Button</button>
+        </div>
+        <div class="scrolling-card1">
+            <img src="data/images/rosebright.png" alt="rosebright">
+            <button class="theme-button" data-theme-id="rosebright">Button</button>
+        </div>
+        <div class="scrolling-card1">
+            <img src="data/images/greenbright.png" alt="greenbright">
+            <button class="theme-button" data-theme-id="greenbright">Button</button>
+        </div>
+        <div class="scrolling-card1">
+            <img src="data/images/skybright.png" alt="skybright">
+            <button class="theme-button" data-theme-id="skybright">Button</button>
+        </div>
+        <div class="scrolling-card1">
+            <img src="data/images/orangebright.png" alt="orangebright">
+            <button class="theme-button" data-theme-id="orangebright">Button</button>
+        </div>
+        <div class="scrolling-card1">
+            <img src="data/images/graybright.png" alt="graybright">
+            <button class="theme-button" data-theme-id="graybright">Button</button>
+        </div>
+    </div>
+
+    <!-- Toggle para cambiar entre las secciones -->
+    <div id="dark-light">
+        <label class="switch">
+            <input type="checkbox" id="toggleSections">
+            <span class="slider round"></span>
+        </label>
+    </div>
+
+    <hr/>
+    <div id="section-title"><label>Colors</label></div>
+    <table>
+        <tr>
+            <th><label for="color_frame">Frame:</label></th>
+            <th><input type="text" id="color_frame" /></th>
+            <th><label for="color_icons">icons:</label></th>
+            <th><input type="text" id="color_icons" /></th>
+        </tr>
+        <tr>
+            <th><label for="color_toolbar">Toolbar:</label>
+            <th><input type="text" id="color_toolbar" /></th>
+            <th><label for="color_toolbar_field">Urlbar:</label></th>
+            <th><input type="text" id="color_toolbar_field" /></th>            
+        </tr>
+        <tr>
+            <th><label for="color_icons_attention">Accent color:</label></th>
+            <th><input type="text" id="color_icons_attention" /></th>
+            <th><label for="color_button_background_hover">Button hover:</label>
+            <th><input type="text" id="color_button_background_hover" /></th>
+        </tr>
+        <tr>
+            <th><label for="color_toolbar_top_separator"> Top Separator:</label>
+            <th><input type="text" id="color_toolbar_top_separator" /></th>
+            <th><label for="color_button_background_active">button active:</label></th>
+            <th><input type="text" id="color_button_background_active" /></th>
+        </tr>
+    </table>
+    <hr/>
+
+    <a href="https://github.com/Godiesc/firefox-gx">
+        <button class="btngx">
+            <img src="data/icons/foxFill.svg" alt="firefoxgx"></img>Firefox-GX theme on Github
+        </button>
+    </a> 
+</body>
+
+</html>
