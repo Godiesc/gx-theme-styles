@@ -7,6 +7,16 @@ async function actualizarColorPopup() {
     
     const style = document.createElement('style');
     style.textContent = `
+
+        :root {
+            --accent-color: color-mix(in srgb, ${tabLineColor} 80%, transparent);
+        }
+
+        @media (prefers-color-scheme: dark) {
+        :root {
+          --accent-color: color-mix(in srgb, ${tabLineColor} 70%, transparent);
+        }}
+
         hr {
             border-image: linear-gradient(to right, transparent, ${tabLineColor}) 1;
         }
@@ -43,6 +53,11 @@ function inicializarSpectrum(id, defaultColor, action) {
         move: function (color) {
             // Enviar el color seleccionado al fondo (background.js)
             browser.runtime.sendMessage({ action, color: color.toHexString() });
+
+            if (id === '#color_popup' || id === '#color_popup_text' || id === '#color_icons_attention') {
+                // Introducir un retraso antes de actualizar el fondo del popup
+            setTimeout(actualizarColorPopup, 200); // 200 milisegundos de retraso
+            }
         },
     });
 
@@ -56,11 +71,17 @@ async function obtenerColores() {
         '#color_icons_attention': currentTheme.colors?.icons_attention ?? '#ff0000',
         '#color_frame': currentTheme.colors?.frame ?? '#101019',
         '#color_toolbar': currentTheme.colors?.toolbar ?? '#14141d',
+        '#color_tab_selected': currentTheme.colors?.tab_selected ?? '#14141d',
+        '#color_popup': currentTheme.colors?.popup ?? '#2a2a3c',
         '#color_icons': currentTheme.colors?.icons ?? '#eaeaea',
         '#color_toolbar_top_separator': currentTheme.colors?.toolbar_top_separator ?? '#ff0000',
         '#color_toolbar_field': currentTheme.colors?.toolbar_field ?? '#14141d',
         '#color_button_background_hover': currentTheme.colors?.button_background_hover ?? '#3f3f5a',
         '#color_button_background_active': currentTheme.colors?.button_background_active ?? '#2a2a3c',
+        '#color_tab_background_text': currentTheme.colors?.tab_background_text ?? '#eaeaea',
+        '#color_tab_text': currentTheme.colors?.tab_text ?? '#eaeaea',
+        '#color_toolbar_text': currentTheme.colors?.toolbar_text ?? '#eaeaea',
+        '#color_popup_text': currentTheme.colors?.popup_text ?? '#eaeaea',
     };
 }
 
@@ -85,7 +106,7 @@ $(document).ready(async function () {
         browser.runtime.sendMessage({ action: `aplicar_theme_${themeId}` });
 
         // Esperar a que se actualice el tema
-        await new Promise(resolve => setTimeout(resolve, 100));
+        await new Promise(resolve => setTimeout(resolve, 200));
 
         // Actualizar el fondo del popup
         await actualizarColorPopup();

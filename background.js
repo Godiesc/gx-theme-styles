@@ -63,20 +63,35 @@ async function cambiarColor(action, color) {
     case 'cambiar_color_button_background_active':
         nuevoTema = { colors: { ...currentTheme.colors, button_background_active: color } };
       break;
+    case 'cambiar_color_tab_selected':
+        nuevoTema = { colors: { ...currentTheme.colors, tab_selected: color } };
+      break;
+    case 'cambiar_color_popup':
+        nuevoTema = { colors: { ...currentTheme.colors, popup: color, popup_border: brightenColor(color, 10) } };
+      break;
+    case 'cambiar_color_tab_background_text':
+        nuevoTema = { colors: { ...currentTheme.colors, tab_background_text: color } };
+      break;
+    case 'cambiar_color_tab_text':
+        nuevoTema = { colors: { ...currentTheme.colors, tab_text: color } };
+      break;
+    case 'cambiar_color_toolbar_text':
+        nuevoTema = { colors: { ...currentTheme.colors, toolbar_text: color, toolbar_field_text: color } };
+      break;
+    case 'cambiar_color_popup_text':
+        nuevoTema = { colors: { ...currentTheme.colors, popup_text: color } };
+      break;
     case 'cambiar_color_toolbar':
       nuevoTema = {
         colors: {
           ...currentTheme.colors,
-          tab_selected: color,
           toolbar: color,
           toolbar_bottom_separator: color,
           toolbar_field_border: color,
           toolbar_field_border_focus: brightenColor(color, 20),
-          popup: brightenColor(color, 2),
-          popup_border: brightenColor(color, 20),
           ntp_background: color,
           ntp_card_background: brightenColor(color, 6),
-          sidebar: brightenColor(color, 2),
+          sidebar: brightenColor(color, 1),
           sidebar_border: brightenColor(color, 20)
         },
       };
@@ -149,7 +164,7 @@ browser.runtime.onMessage.addListener(async (message) => {
         ntp_background: "#121019",
         ntp_text: "#e5e5e6",
         ntp_card_background: "#211f2a",
-        popup: "#1c1726fe",
+        popup: "#1c1726",
         popup_text: "#e5e5e6",
         popup_border: "#4a3e65",
         popup_highlight: "#b01f41",
@@ -201,11 +216,10 @@ browser.runtime.onMessage.addListener(async (message) => {
         ntp_background: "#002429",
         ntp_text: "#e5e5e6",
         ntp_card_background: "#00363d",
-        popup: "#00363dfd",
+        popup: "#00363d",
         popup_text: "#e5e5e6",
         popup_border: "#0090a3",
         popup_highlight: "#fdf008b0",
-        popup_highlight_text: "#000000",
         sidebar: "#072b30",
         sidebar_text: "#d3d8db",
         sidebar_border: "#0090a3",
@@ -287,7 +301,7 @@ browser.runtime.onMessage.addListener(async (message) => {
         toolbar_text: "#b3b3b3",
         toolbar_field: "#0e0c1d",
         toolbar_field_text: "#e5e5e6",
-        toolbar_top_separator: "#6600ff",
+        toolbar_top_separator: "#8533ff",
         toolbar_bottom_separator: "#0e0c1d",
         bookmark_text: "#d3d3d3",
         toolbar_field_border: "#0e0c1d",
@@ -399,7 +413,7 @@ browser.runtime.onMessage.addListener(async (message) => {
         toolbar_field_highlight_text: "#000000",
         toolbar_field_text_focus: "#e5e5e6",
         button_background_hover: "#3c4047",
-        button_background_active: "#3c404780",
+        button_background_active: "#3c4047",
         icons: "#b9d0bc",
         icons_attention: "#cccccc",
         ntp_background: "#141414",

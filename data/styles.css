@@ -20,33 +20,34 @@
 
 body {
   width: 350px;
-  height: auto;
   font-family: "Segoe UI", Arial, sans-serif, -apple-system, BlinkMacSystemFont;
   color: var(--text);
   overflow: hidden;
+  font-size: smaller;
 }
 
 #maintitle{
   text-align: end;
-  font-size: large;
+  font-size: initial;
   font-weight: 600;
 }
 
 /* Divisor de secciones */
 #section-title{
-  margin-block-end: 14px;
+  margin-block-end: 8px;
+  font-weight: 700;
 }
 
 /* Tabla de colores */
 table{
-  margin-inline: 3%;
   vertical-align: middle;
-  width: 94%;
+  width: 100%;
 }
 
 th{
   text-align: end;
   font-weight: normal;
+  width: 50%;
 }
 
 hr {
@@ -167,7 +168,7 @@ hr {
  .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
+  width: 162px;
   height: 34px;
 }
 
@@ -187,26 +188,50 @@ hr {
   right: 0;
   bottom: 0;
   background-color: color-mix(in srbg, var(--bg), transparent);
-  transition: .2s;
   outline: 1px solid var(--outline-color);
 }
 
 .slider:before {
   position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  transition: .2s;
-  background-color: transparent;
-  -moz-context-properties: fill;
-  fill: var(--text);
-  background: url("icons/dark.svg");
+  content: "Dark";
+  font-size: medium;
+  font-weight: 600;
+  line-height: 31px;
+  background-color: var(--accent-color);
+  width: 80px;
+  left: 1px;
+  top: 1px;
+  bottom: 1px;
 }
 
 input:checked + .slider {
-  background-color: var(--bg);
+  background-color: transparent;
+}
+
+input:checked + .slider:after {
+  position: absolute;
+  content: "Dark";
+  font-size: medium;
+  font-weight: 600;
+  line-height: 31px;
+  background-color: transparent;
+  width: 80px;
+  left: 1px;
+  top: 1px;
+  bottom: 1px;
+}
+
+input:not(:checked) + .slider:after {
+  position: absolute;
+  content: "Light";
+  line-height: 31px;
+  font-size: medium;
+  font-weight: 600;
+  background-color: transparent;
+  width: 80px;
+  right: 1px;
+  top: 1px;
+  bottom: 1px;
 }
 
 input:focus + .slider {
@@ -214,11 +239,13 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-  -moz-context-properties: fill;
-  fill: var(--text);
-  background: url("icons/light.svg");
+  content: "Light";
+  color: white;
+  right: 1px;
+  top: 1px;
+  bottom: 1px;
+  -ms-transform: translateX(80px);
+  transform: translateX(80px);
 }
 
 /* Rounded sliders */
@@ -227,7 +254,7 @@ input:checked + .slider:before {
 }
 
 .slider.round:before {
-  border-radius: 50%;
+  border-radius: 34px;
 }
 
 /* ##################### Footer + Ícono firefox ##################### */
@@ -236,9 +263,9 @@ input:checked + .slider:before {
   height: 14px;
   -moz-context-properties: fill;
   fill: var(--text);
-  max-height: 40px;
   vertical-align: middle;
-  margin-right: 8px;
+  margin-inline-end: 6px;
+  margin-block: 6px;
 }
 
 .btngx{
@@ -255,7 +282,7 @@ input:checked + .slider:before {
 .btngx:hover, .btngx:hover img{
   color: var(--text);
   fill: var(--text);
-  text-decoration: underline;
+  cursor: pointer;
 }
 
 /* ###################### Estilos de Spectrum ###################### */
