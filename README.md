@@ -3,4 +3,4 @@ Extension to customize the theme of your Firefox browser, allows you to choose a
 
 The extension is avaliable in Firefox store: <a href="https://addons.mozilla.org/es/firefox/addon/gx-theme-styles/">GX Theme Styles</a>.
 
-![extension](https://github.com/Godiesc/gx-theme-styles/assets/22057609/382d760d-5c7a-4e33-8ba5-7afc37d77894)
+![imagen](https://github.com/user-attachments/assets/72b2411e-437e-4b5e-ab1e-f9ee505d3325)
