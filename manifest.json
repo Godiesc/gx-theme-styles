@@ -1,28 +1,29 @@
 {
-    "manifest_version": 2,
-    "name": "GX Theme Styles",
-    "version": "1.0.4",
-    "description": "Personalize your browser with our beautiful preset GX themes or choose your favorite colors and make your browser the most beautiful one.",
-    "browser_specific_settings": {
-        "gecko": {
-          "id": "GXThemeStyles@Godie"
-        }
-    },
-    "icons": {
-      "48": "data/icons/icon.svg"
-    },
-    "permissions": [
-      "theme",
-      "storage"
-    ],
-    "browser_action": {
-      "default_icon": "data/icons/icon.svg",
-      "default_title": "GX Theme - click to see the options",
-      "default_popup": "popup.html"
-    },
-    "background": {
-      "scripts": ["background.js"],
-      "persistent": false
+  "manifest_version": 2,
+  "name": "GX Theme Styles",
+  "version": "1.0.6",
+  "description": "Personalize your browser with our preset GX themes or choose your favorite colors and give your browser your personal style.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "GXThemeStyles@Godie"
     }
+  },
+  "icons": {
+    "48": "data/icons/iconFill.svg"
+  },
+  "permissions": [
+    "theme",
+    "storage"
+  ],
+  "browser_action": {
+    "default_icon": "data/icons/iconFill.svg",
+    "default_title": "GX Theme - click to see the options",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
   }
-  
+}

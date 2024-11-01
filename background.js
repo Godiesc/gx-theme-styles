@@ -1,18 +1,25 @@
 /* Función para aclarán un color */
-function brightenColor(hex, percent) {
+function brightenColor(rgb, percent) {
   percent = Math.min(100, Math.max(0, percent));
 
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
+  // Asegúrate de que el formato sea "rgb(r, g, b)" o "rgba(r, g, b, a)"
+  const rgba = rgb.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d?\.?\d+))?\)/);
+  
+  if (!rgba) {
+    throw new Error('Invalid RGB/RGBA format');
+  }
+
+  const r = parseInt(rgba[1]);
+  const g = parseInt(rgba[2]);
+  const b = parseInt(rgba[3]);
+  const a = rgba[4] ? parseFloat(rgba[4]) : 1; // Alpha, por defecto 1 si no está
 
   const newR = Math.round(r + (255 - r) * (percent / 100));
   const newG = Math.round(g + (255 - g) * (percent / 100));
   const newB = Math.round(b + (255 - b) * (percent / 100));
 
-  const newHex = `#${(newR << 16 | newG << 8 | newB).toString(16).padStart(6, '0')}`;
-
-  return newHex;
+  // Devuelve el nuevo color en formato RGBA
+  return `rgba(${newR}, ${newG}, ${newB}, ${a})`;
 }
 
 // Guardar la configuración del tema
@@ -81,6 +88,12 @@ async function cambiarColor(action, color) {
     case 'cambiar_color_popup_text':
         nuevoTema = { colors: { ...currentTheme.colors, popup_text: color } };
       break;
+    case 'cambiar_color_sidebar_text':
+        nuevoTema = { colors: { ...currentTheme.colors, sidebar_text: color } };
+      break;
+    case 'cambiar_color_ntp_text':
+        nuevoTema = { colors: { ...currentTheme.colors, ntp_text: color } };
+      break;
     case 'cambiar_color_toolbar':
       nuevoTema = {
         colors: {
@@ -145,7 +158,7 @@ browser.runtime.onMessage.addListener(async (message) => {
         tab_background_text: "#CCCCCC",
         frame_inactive: "#0b0a10",
         toolbar: "#121019",
-        toolbar_text: "#b3b3b3",
+        toolbar_text: "#ffffff",
         toolbar_field: "#121019",
         toolbar_field_text: "#ffffff",
         toolbar_top_separator: "#af0429",
@@ -186,48 +199,48 @@ browser.runtime.onMessage.addListener(async (message) => {
   }
 });
 
-/* Apply default Swamp*/ 
+/* Apply default Ultraviolet*/ 
 
 browser.runtime.onMessage.addListener(async (message) => {
-  if (message.action === 'aplicar_theme_swamp') {
+  if (message.action === 'aplicar_theme_ultraviolet') {
     const nuevoTema = {
       colors: {
-        frame: "#001214",
+        frame: "#07060e",
         tab_background_text: "#b3b3b3",
-        frame_inactive: "#00171a",
-        toolbar: "#002429",
+        frame_inactive: "#0b0a14",
+        toolbar: "#0e0c1d",
         toolbar_text: "#b3b3b3",
-        toolbar_field: "#002429",
+        toolbar_field: "#0e0c1d",
         toolbar_field_text: "#e5e5e6",
-        toolbar_top_separator: "#7e7801",
-        toolbar_bottom_separator: "#002429",
-        toolbar_field_border: "#002429",
-        toolbar_field_focus: "#004852fc",
-        toolbar_field_border_focus: "#004852fc",
-        toolbar_field_highlight: "#fdf008D0",
+        toolbar_top_separator: "#8533ff",
+        toolbar_bottom_separator: "#0e0c1d",
+        bookmark_text: "#d3d3d3",
+        toolbar_field_border: "#0e0c1d",
+        toolbar_field_focus: "#1d1839fe",
+        toolbar_field_border_focus: "#1d1839fe",
+        toolbar_field_highlight: "#a970ff",
         toolbar_field_highlight_text: "#000000",
         toolbar_field_text_focus: "#e5e5e6",
-        toolbar_vertical_separator: "#60906090",
-        bookmark_text: "#ffffff",
-        button_background_hover: "#1b3b40",
-        button_background_active: "#00171a",
-        icons: "#8af1ff",
-        icons_attention: "#fdf008",
-        ntp_background: "#002429",
+        button_background_hover: "#2c265a",
+        button_background_active: "#1f1c3b",
+        icons: "#b3addc",
+        icons_attention: "#a970ff",
+        ntp_background: "#0e0c1d",
         ntp_text: "#e5e5e6",
-        ntp_card_background: "#00363d",
-        popup: "#00363d",
+        ntp_card_background: "#1a1736",
+        popup: "#15122b",
         popup_text: "#e5e5e6",
-        popup_border: "#0090a3",
-        popup_highlight: "#fdf008b0",
-        sidebar: "#072b30",
+        popup_border: "#3a3172",
+        popup_highlight: "#60429d",
+        sidebar: "#110f24",
         sidebar_text: "#d3d8db",
-        sidebar_border: "#0090a3",
-        sidebar_highlight: "#fdf008b0",
-        sidebar_highlight_text: "#000000",
-        tab_line: "#cac002",
-        tab_selected: "#002429",
-        tab_loading: "#fdf008",
+        sidebar_border: "#3a3172",
+        sidebar_highlight: "#2c265a",
+        sidebar_highlight_text: "#EEEEEE",
+        tab_line: "#a970ff",
+        tab_selected: "#0e0c1d",
+        tab_loading: "#a970ff",
+        tab_loading_inactive: "#a970ff",
         tab_text: "#ffffff"
       },
     };
@@ -288,48 +301,99 @@ browser.runtime.onMessage.addListener(async (message) => {
   }
 });
 
-/* Apply default Ultraviolet*/ 
+/* Apply default Green*/ 
 
 browser.runtime.onMessage.addListener(async (message) => {
-  if (message.action === 'aplicar_theme_ultraviolet') {
+  if (message.action === 'aplicar_theme_green') {
     const nuevoTema = {
       colors: {
-        frame: "#07060e",
+        frame: "#070710",
         tab_background_text: "#b3b3b3",
-        frame_inactive: "#0b0a14",
-        toolbar: "#0e0c1d",
+        frame_inactive: "#101017",
+        toolbar: "#101019",
         toolbar_text: "#b3b3b3",
-        toolbar_field: "#0e0c1d",
+        toolbar_field: "#101019",
         toolbar_field_text: "#e5e5e6",
-        toolbar_top_separator: "#8533ff",
-        toolbar_bottom_separator: "#0e0c1d",
-        bookmark_text: "#d3d3d3",
-        toolbar_field_border: "#0e0c1d",
-        toolbar_field_focus: "#1d1839fe",
-        toolbar_field_border_focus: "#1d1839fe",
-        toolbar_field_highlight: "#a970ff",
+        toolbar_top_separator: "#07473d",
+        toolbar_bottom_separator: "#101019",
+        bookmark_text: "#b3b3b3",
+        toolbar_field_border: "#101019",
+        toolbar_field_focus: "#1e2e35fe",
+        toolbar_field_border_focus: "#1e2e35",
+        toolbar_field_highlight: "#04ae8c",
         toolbar_field_highlight_text: "#000000",
         toolbar_field_text_focus: "#e5e5e6",
-        button_background_hover: "#2c265a",
-        button_background_active: "#1f1c3b",
-        icons: "#b3addc",
-        icons_attention: "#a970ff",
-        ntp_background: "#0e0c1d",
+        button_background_hover: "#342f3f",
+        button_background_active: "#272231",
+        icons: "#b6b6d2",
+        icons_attention: "#05b694",
+        ntp_background: "#101019",
         ntp_text: "#e5e5e6",
-        ntp_card_background: "#1a1736",
-        popup: "#15122b",
+        ntp_card_background: "#222029",
+        popup: "#12131d",
         popup_text: "#e5e5e6",
-        popup_border: "#3a3172",
-        popup_highlight: "#60429d",
-        sidebar: "#110f24",
+        popup_border: "#253941",
+        popup_highlight: "#049578bb",
+        sidebar: "#14141d",
         sidebar_text: "#d3d8db",
-        sidebar_border: "#3a3172",
-        sidebar_highlight: "#2c265a",
-        sidebar_highlight_text: "#EEEEEE",
-        tab_line: "#a970ff",
-        tab_selected: "#0e0c1d",
-        tab_loading: "#a970ff",
-        tab_loading_inactive: "#a970ff",
+        sidebar_border: "#262735",
+        sidebar_highlight: "#036350bb",
+        sidebar_highlight_text: "#eeeeee",
+        tab_line: "#049578",
+        tab_selected: "#101019",
+        tab_loading: "#05b694",
+        tab_loading_inactive: "#05b694",
+        tab_text: "#ffffff"
+      },
+    };
+    await browser.theme.update(nuevoTema);
+    await guardarConfiguracionTema(nuevoTema);
+    await aplicarTemaConConfiguracion(nuevoTema);
+  }
+});
+
+/* Apply default Swamp*/ 
+
+browser.runtime.onMessage.addListener(async (message) => {
+  if (message.action === 'aplicar_theme_swamp') {
+    const nuevoTema = {
+      colors: {
+        frame: "#001214",
+        tab_background_text: "#b3b3b3",
+        frame_inactive: "#00171a",
+        toolbar: "#002429",
+        toolbar_text: "#b3b3b3",
+        toolbar_field: "#002429",
+        toolbar_field_text: "#e5e5e6",
+        toolbar_top_separator: "#7e7801",
+        toolbar_bottom_separator: "#002429",
+        toolbar_field_border: "#002429",
+        toolbar_field_focus: "#004852fc",
+        toolbar_field_border_focus: "#004852fc",
+        toolbar_field_highlight: "#fdf008D0",
+        toolbar_field_highlight_text: "#000000",
+        toolbar_field_text_focus: "#e5e5e6",
+        toolbar_vertical_separator: "#60906090",
+        bookmark_text: "#ffffff",
+        button_background_hover: "#1b3b40",
+        button_background_active: "#00171a",
+        icons: "#8af1ff",
+        icons_attention: "#fdf008",
+        ntp_background: "#002429",
+        ntp_text: "#e5e5e6",
+        ntp_card_background: "#00363d",
+        popup: "#00363d",
+        popup_text: "#e5e5e6",
+        popup_border: "#0090a3",
+        popup_highlight: "#fdf008b0",
+        sidebar: "#072b30",
+        sidebar_text: "#d3d8db",
+        sidebar_border: "#0090a3",
+        sidebar_highlight: "#fdf008b0",
+        sidebar_highlight_text: "#000000",
+        tab_line: "#cac002",
+        tab_selected: "#002429",
+        tab_loading: "#fdf008",
         tab_text: "#ffffff"
       },
     };

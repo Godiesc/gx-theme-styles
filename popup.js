@@ -28,7 +28,10 @@ async function actualizarColorPopup() {
             outline: 2px solid ${tabLineColor};
             transition-duration: 0ms;
         }
-        .btngx:hover{
+        .btnrate{
+            fill: ${tabLineColor};
+        }
+        .btngx:hover, .btnrate:hover{
             background-color: color-mix(in srgb, ${tabLineColor}, transparent);
         }
         .sp-replacer:hover, .sp-replacer.sp-active {
@@ -46,13 +49,14 @@ function inicializarSpectrum(id, defaultColor, action) {
     const spectrumInstance = $element.spectrum({
         color: defaultColor,
         preferredFormat: "hex",
+        showAlpha: true,
         theme: 'dark',
         flat: false,
         showInput: true,
         showButtons: false,
         move: function (color) {
             // Enviar el color seleccionado al fondo (background.js)
-            browser.runtime.sendMessage({ action, color: color.toHexString() });
+            browser.runtime.sendMessage({ action, color: color.toRgbString() });
 
             if (id === '#color_popup' || id === '#color_popup_text' || id === '#color_icons_attention') {
                 // Introducir un retraso antes de actualizar el fondo del popup
@@ -82,6 +86,8 @@ async function obtenerColores() {
         '#color_tab_text': currentTheme.colors?.tab_text ?? '#eaeaea',
         '#color_toolbar_text': currentTheme.colors?.toolbar_text ?? '#eaeaea',
         '#color_popup_text': currentTheme.colors?.popup_text ?? '#eaeaea',
+        '#color_ntp_text': currentTheme.colors?.ntp_text ?? '#eaeaea',
+        '#color_sidebar_text': currentTheme.colors?.sidebar_text ?? '#eaeaea',
     };
 }
 
@@ -123,11 +129,11 @@ $(document).ready(async function () {
 
     function setupScrollingButtons(leftBtn, rightBtn, container) {
         leftBtn.addEventListener("click", () => {
-            container.scrollLeft -= 306;
+            container.scrollLeft -= 310;
         });
     
         rightBtn.addEventListener("click", () => {
-            container.scrollLeft += 306;
+            container.scrollLeft += 310;
         });
     }
     

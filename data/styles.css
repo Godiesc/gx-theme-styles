@@ -34,7 +34,7 @@ body {
 
 /* Divisor de secciones */
 #section-title{
-  margin-block-end: 8px;
+  margin-block-end: 6px;
   font-weight: 700;
 }
 
@@ -60,14 +60,25 @@ hr {
 .scrolling-card,
 .scrolling-card1 {
   position: relative;
-  width: 139px;
-  max-width: 139px;
+  flex: 0 0 auto;
+  border: solid 1px var(--bg);
+  border-radius: 2px;
+  margin-block-start: 6px;
+  margin-inline: 4px;
+  width: 93px;
+  height: 66px;/**/
+  text-align: center;
+}
+
+.scrolling-card:last-child,
+.scrolling-card1:last-child {
+  margin-block-end: 6px;
 }
 
 .scrolling-card img,
 .scrolling-card1 img {
   width: 100%;
-  height: 98px;
+  /*height: 49px;/**/
   border-radius: 2px;
 }
 
@@ -78,13 +89,12 @@ hr {
   left: 0%;
   background-color: transparent;
   color: transparent;
-  font-size: 16px;
   padding: 0px;
   border: none;
   cursor: pointer;
   text-align: center;
-  width: 139px;
-  height: 98px;
+  width: 93px;
+  height: 66px;
   transition: 200ms;
   border-radius: 2px;
 }
@@ -105,18 +115,7 @@ hr {
   scroll-behavior: smooth;
   margin-inline: 20px;
   overflow: hidden;
-}
-
-.scrolling-card,
-.scrolling-card1 {
-  position: relative;
-  flex: 0 0 auto;
-  border: solid 1px var(--bg);
-  border-radius: 2px;
-  margin: 6px;
-  width: 250px;
-  height: 98px;
-  text-align: center;
+  width: 308px;
 }
 
 .scrolling-buttons-container,
@@ -127,14 +126,14 @@ hr {
   font-size: 25px;
   margin-inline: 0px;
   width: 350px;
-  height: 98px;
+  height: 78px;
 }
 
 /* Botón izquierda */
 #scrolling-button-left, #scrolling-button-right,
 #scrolling-button-left1, #scrolling-button-right1{
   background-color: transparent;
-  background: url("../data/icons/back.svg") no-repeat center;
+  background: url(chrome://global/skin/icons/arrow-left.svg) no-repeat center;
   background-size: 14px 14px;
   -moz-context-properties: fill;
   fill: var(--text);
@@ -145,15 +144,22 @@ hr {
   cursor: pointer;
   border-radius: 0px;
   text-align: center;
-  height: 98px;
+  height: 78px;
   width: 16px;
-  margin-block-start: 6px;
+
+  &:hover{
+    transform: scale(1.1);
+    transition-duration: 0.2s;
+  }
+  &:active{
+    transform: scale(0.9);
+  }
 }
 
 /* Botón derecha */
 #scrolling-button-right,
 #scrolling-button-right1 {
-  background: url("../data/icons/forward.svg") no-repeat center;
+  background: url(chrome://global/skin/icons/arrow-right.svg) no-repeat center;
   background-size: 14px 14px;
 }
 
@@ -258,17 +264,19 @@ input:checked + .slider:before {
 }
 
 /* ##################### Footer + Ícono firefox ##################### */
-.btngx img{
-  width: 14px;
-  height: 14px;
-  -moz-context-properties: fill;
-  fill: var(--text);
-  vertical-align: middle;
-  margin-inline-end: 6px;
-  margin-block: 6px;
+.btngx {
+  & img{
+    width: 14px;
+    height: 14px;
+    -moz-context-properties: fill;
+    fill: var(--text);
+    vertical-align: middle;
+    margin-inline-end: 6px;
+    margin-block: 6px;
+  }
 }
 
-.btngx{
+.btngx {
   width: 100%;
   height: 30px;
   background-color: transparent;
@@ -279,10 +287,33 @@ input:checked + .slider:before {
   text-align: center;
 }
 
-.btngx:hover, .btngx:hover img{
+.btngx, .btnrate {
+  &:hover, &:hover image {
+    color: var(--text);
+    fill: var(--text);
+    cursor: pointer;
+  }
+}
+
+.btnrate {
+  position: absolute;
+  right: 8px !important;
+  width: 60px;
+  background-color: transparent;
+  border-radius: 4px;
   color: var(--text);
-  fill: var(--text);
-  cursor: pointer;
+  border-color: transparent;
+  font-size: smaller;
+}
+
+.btnrate {
+  & img{
+    width: 12px;
+    height: 13px;
+    -moz-context-properties: fill;
+    vertical-align: top;
+    margin-inline-end: 6px;
+  }
 }
 
 /* ###################### Estilos de Spectrum ###################### */
